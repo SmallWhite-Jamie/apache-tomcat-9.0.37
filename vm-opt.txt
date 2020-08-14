@@ -1,0 +1,14 @@
+
+tomcat 源码启动配置
+
+-Dcatalina.home=C:\work\projects\apache-tomcat-9.0.37-src
+-Dcatalina.base=C:\work\projects\apache-tomcat-9.0.37-src
+-Djava.endorsed.dirs=C:\work\projects\apache-tomcat-9.0.37-src\endorsed
+-Djava.io.tmpdir=C:\work\projects\apache-tomcat-9.0.37-src\temp
+-Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+-Djava.util.logging.config.file=C:\work\projects\apache-tomcat-9.0.37-src\conf\logging.properties
+-Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+-Djdk.tls.ephemeralDHKeySize=2048
+-Dfile.encoding=UTF8
+-Duser.language=en
+-Duser.region=US
