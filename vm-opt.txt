@@ -1,14 +1,23 @@
 
 tomcat 源码启动配置
 
--Dcatalina.home=C:\work\projects\apache-tomcat-9.0.37-src
--Dcatalina.base=C:\work\projects\apache-tomcat-9.0.37-src
--Djava.endorsed.dirs=C:\work\projects\apache-tomcat-9.0.37-src\endorsed
--Djava.io.tmpdir=C:\work\projects\apache-tomcat-9.0.37-src\temp
+-Dcatalina.home=catalina
+-Dcatalina.base=catalina
+-Djava.endorsed.dirs=catalina\endorsed
+-Djava.io.tmpdir=catalina\temp
 -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
 -Djava.util.logging.config.file=C:\work\projects\apache-tomcat-9.0.37-src\conf\logging.properties
 -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
 -Djdk.tls.ephemeralDHKeySize=2048
 -Dfile.encoding=UTF8
--Duser.language=en
--Duser.region=US
+
+
+
+// 解决启动时候控制台乱码问题
+    1、org/apache/tomcat/util/res/StringManager.java:136
+    2、org/apache/jasper/compiler/Localizer.java:60
+或者启动时候加参数
+    -Duser.language=en
+    -Duser.region=US
+
+
