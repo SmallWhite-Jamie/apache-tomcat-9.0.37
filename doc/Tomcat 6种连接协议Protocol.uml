@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>org.apache.coyote.ProtocolHandler</OriginalElement>
+  <nodes>
+    <node x="187.13636363636363" y="214.0">org.apache.coyote.ajp.AbstractAjpProtocol</node>
+    <node x="415.0" y="321.0">org.apache.coyote.ajp.AjpNioProtocol</node>
+    <node x="779.25" y="428.0">org.apache.coyote.http11.Http11NioProtocol</node>
+    <node x="0.0" y="321.0">org.apache.coyote.ajp.AjpAprProtocol</node>
+    <node x="618.0" y="321.0">org.apache.coyote.http11.AbstractHttp11JsseProtocol</node>
+    <node x="536.0681818181819" y="0.0">org.apache.coyote.ProtocolHandler</node>
+    <node x="936.0" y="321.0">org.apache.coyote.http11.Http11AprProtocol</node>
+    <node x="531.0681818181819" y="107.0">org.apache.coyote.AbstractProtocol</node>
+    <node x="786.3636363636364" y="214.0">org.apache.coyote.http11.AbstractHttp11Protocol</node>
+    <node x="538.25" y="428.0">org.apache.coyote.http11.Http11Nio2Protocol</node>
+    <node x="203.0" y="321.0">org.apache.coyote.ajp.AjpNio2Protocol</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="org.apache.coyote.http11.Http11AprProtocol" target="org.apache.coyote.http11.AbstractHttp11Protocol">
+      <point x="0.0" y="-28.5" />
+      <point x="1042.0" y="296.0" />
+      <point x="981.3636363636364" y="296.0" />
+      <point x="65.0" y="28.5" />
+    </edge>
+    <edge source="org.apache.coyote.AbstractProtocol" target="org.apache.coyote.ProtocolHandler">
+      <point x="0.0" y="-28.5" />
+      <point x="0.0" y="28.5" />
+    </edge>
+    <edge source="org.apache.coyote.http11.Http11NioProtocol" target="org.apache.coyote.http11.AbstractHttp11JsseProtocol">
+      <point x="0.0" y="-28.5" />
+      <point x="885.25" y="403.0" />
+      <point x="841.5" y="403.0" />
+      <point x="74.5" y="28.5" />
+    </edge>
+    <edge source="org.apache.coyote.http11.Http11Nio2Protocol" target="org.apache.coyote.http11.AbstractHttp11JsseProtocol">
+      <point x="0.0" y="-28.5" />
+      <point x="648.75" y="403.0" />
+      <point x="692.5" y="403.0" />
+      <point x="-74.5" y="28.5" />
+    </edge>
+    <edge source="org.apache.coyote.ajp.AbstractAjpProtocol" target="org.apache.coyote.AbstractProtocol">
+      <point x="0.0" y="-28.5" />
+      <point x="302.6363636363636" y="189.0" />
+      <point x="581.5681818181819" y="189.0" />
+      <point x="-50.5" y="28.5" />
+    </edge>
+    <edge source="org.apache.coyote.ajp.AjpNioProtocol" target="org.apache.coyote.ajp.AbstractAjpProtocol">
+      <point x="0.0" y="-28.5" />
+      <point x="506.5" y="296.0" />
+      <point x="379.6363636363636" y="296.0" />
+      <point x="77.0" y="28.5" />
+    </edge>
+    <edge source="org.apache.coyote.http11.AbstractHttp11JsseProtocol" target="org.apache.coyote.http11.AbstractHttp11Protocol">
+      <point x="0.0" y="-28.5" />
+      <point x="767.0" y="296.0" />
+      <point x="851.3636363636364" y="296.0" />
+      <point x="-65.0" y="28.5" />
+    </edge>
+    <edge source="org.apache.coyote.ajp.AjpNio2Protocol" target="org.apache.coyote.ajp.AbstractAjpProtocol">
+      <point x="0.0" y="-28.5" />
+      <point x="299.0" y="296.0" />
+      <point x="302.6363636363636" y="296.0" />
+      <point x="0.0" y="28.5" />
+    </edge>
+    <edge source="org.apache.coyote.http11.AbstractHttp11Protocol" target="org.apache.coyote.AbstractProtocol">
+      <point x="0.0" y="-28.5" />
+      <point x="916.3636363636364" y="189.0" />
+      <point x="682.5681818181819" y="189.0" />
+      <point x="50.5" y="28.5" />
+    </edge>
+    <edge source="org.apache.coyote.ajp.AjpAprProtocol" target="org.apache.coyote.ajp.AbstractAjpProtocol">
+      <point x="0.0" y="-28.5" />
+      <point x="91.5" y="296.0" />
+      <point x="225.63636363636363" y="296.0" />
+      <point x="-77.0" y="28.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="574.0" y="242.5" />
+  <SelectedNodes>
+    <node>org.apache.coyote.http11.Http11NioProtocol</node>
+  </SelectedNodes>
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
