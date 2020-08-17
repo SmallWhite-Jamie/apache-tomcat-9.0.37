@@ -60,6 +60,7 @@ public final class Bootstrap {
 
     private static final Pattern PATH_PATTERN = Pattern.compile("(\"[^\"]*\")|(([^,])*)");
 
+    // 静态代码块主要设置tomcat启动之前的环境变量：user.dir、catalina.home、catalina.base
     static {
         // Will always be non-null
         String userDir = System.getProperty("user.dir");
@@ -248,11 +249,16 @@ public final class Bootstrap {
      */
     public void init() throws Exception {
 
+        // 初始化tomcat内部的三个类加载器：commonLoader、catalinaLoader、sharedLoader 打破双亲委派机制
         initClassLoaders();
 
+        // 设置当前启动线程的类加载器
         Thread.currentThread().setContextClassLoader(catalinaLoader);
-
+        // 设安全类加载器并预加载一些核心类
         SecurityClassLoad.securityClassLoad(catalinaLoader);
+
+
+        // 下面代码主要 创建 org.apache.catalina.startup.Catalina 对象并调用其 setParentClassLoader 方法
 
         // Load our startup class and call its process() method
         if (log.isDebugEnabled())
@@ -436,8 +442,10 @@ public final class Bootstrap {
         synchronized (daemonLock) {
             if (daemon == null) {
                 // Don't set daemon until init() has completed
+                // 创建一个Bootstrap对象
                 Bootstrap bootstrap = new Bootstrap();
                 try {
+                    // 设置自定义类加载器创建Catalina对象
                     bootstrap.init();
                 } catch (Throwable t) {
                     handleThrowable(t);
