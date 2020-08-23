@@ -208,6 +208,7 @@ public class NioEndpoint extends AbstractJsseEndpoint<NioChannel,SocketChannel> 
      */
     @Override
     public void bind() throws Exception {
+        // 创建并初始化一个 ServerSocketChannel，用来监听请求（Acceptor）
         initServerSocket();
 
         setStopLatch(new CountDownLatch(1));
@@ -263,14 +264,15 @@ public class NioEndpoint extends AbstractJsseEndpoint<NioChannel,SocketChannel> 
                         socketProperties.getBufferPool());
             }
 
-            // Create worker collection
+            // 创建worker线程池,处理请求
             if (getExecutor() == null) {
                 createExecutor();
             }
 
+            // 初始化一个 LimitLatch 用来判断请求是否达到最大数量
             initializeConnectionLatch();
 
-            // Start poller thread
+            // 启动一个 poller 线程，其内部维护了一个Selector对象，NIO就是基于Selector来完成逻辑的
             poller = new Poller();
             Thread pollerThread = new Thread(poller, getName() + "-ClientPoller");
             pollerThread.setPriority(threadPriority);
@@ -520,7 +522,11 @@ public class NioEndpoint extends AbstractJsseEndpoint<NioChannel,SocketChannel> 
     }
 
     /**
-     * Poller class.
+     *
+     * 内部维护了一个主的 Selector，当然在connector中并不止一个Selector，在socket的读写数据时，为了控制timeout也有一个Selector，在 BlockSelector 中介绍。
+     * 作为events queue的消费者，从queue中取出PollerEvent对象，然后将此对象中的channel以OP_READ事件注册到主Selector中，
+     * 然后主Selector执行select操作，遍历出可以读数据的socket，并从Worker线程池中拿到可用的Worker线程，然后将socket传递给Worker。
+     *
      */
     public class Poller implements Runnable {
 
