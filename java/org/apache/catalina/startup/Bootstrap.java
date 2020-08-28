@@ -476,7 +476,9 @@ public final class Bootstrap {
                 daemon.stop();
             } else if (command.equals("start")) {
                 daemon.setAwait(true);
+                // load方法内部反射调用Catalina的load方法，以责任链的方式进行各个组件init方法的初始化
                 daemon.load(args);
+                // start方法内部反射调用Catalina的start方法启动各个组件
                 daemon.start();
                 if (null == daemon.getServer()) {
                     System.exit(1);
