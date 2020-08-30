@@ -264,7 +264,8 @@ public class NioEndpoint extends AbstractJsseEndpoint<NioChannel,SocketChannel> 
                         socketProperties.getBufferPool());
             }
 
-            // 创建worker线程池,处理请求
+            // 创建worker线程池,处理请求。
+            // 用于对请求进行处理，包括分析请求报文并创建 Request 对象，调用容器的 pipeline 进行处理。
             if (getExecutor() == null) {
                 createExecutor();
             }
@@ -273,12 +274,14 @@ public class NioEndpoint extends AbstractJsseEndpoint<NioChannel,SocketChannel> 
             initializeConnectionLatch();
 
             // 启动一个 poller 线程，其内部维护了一个Selector对象，NIO就是基于Selector来完成逻辑的
+            // 用于监听 Socket 事件，当 Socket 可读或可写等等时，将 Socket 封装一下添加到 worker(默认名称 http-nio-8080-exec-1) 线程池的任务队列中。
             poller = new Poller();
             Thread pollerThread = new Thread(poller, getName() + "-ClientPoller");
             pollerThread.setPriority(threadPriority);
             pollerThread.setDaemon(true);
             pollerThread.start();
 
+            //开启一个Acceptor线程，接收新的连接
             startAcceptorThread();
         }
     }
